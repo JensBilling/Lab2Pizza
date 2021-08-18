@@ -1,5 +1,6 @@
 package com.example.schoolspring.controllers;
 
+import org.assertj.core.api.AssertionsForClassTypes;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.server.LocalServerPort;
@@ -28,7 +29,8 @@ class PizzaEndToEndTest {
                 .join();
 
         assertThat(response.statusCode()).isEqualTo(200);
-        assertThat(response.body()).isEqualTo("[{\"id\":1,\"name\":\"Hawaii\",\"ingredients\":\"Ost, Tomatsås, Skinka, Ananas\",\"price\":80}]");
+        AssertionsForClassTypes.assertThat(response.body()).isEqualTo("[{\"id\":1,\"name\":\"reale\",\"ingredients\":\"Ost, Tomatsås, oxfile, ägg, beasås\",\"price\":90}]");
+
     }
 
 }

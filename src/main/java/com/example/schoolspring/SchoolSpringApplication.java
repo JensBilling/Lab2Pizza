@@ -14,6 +14,7 @@ public class SchoolSpringApplication {
         SpringApplication.run(SchoolSpringApplication.class, args);
     }
 
+
     @Bean
     public CommandLineRunner init(PizzaRepository pizzaRepository){
         return (args) -> {
@@ -22,6 +23,8 @@ public class SchoolSpringApplication {
             }
 
         };
+
     }
+
 
 }

@@ -8,10 +8,12 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@WebMvcTest(controllers = {PizzaController.class})
-class PizzaMvcTest {
+
+@WebMvcTest(controllers = PizzaController.class)
+class PizzaMVCTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -19,9 +21,27 @@ class PizzaMvcTest {
     @MockBean
     private PizzaRepository pizzaRepository;
 
+
     @Test
     void getAllPizzasReturnsOnePizza() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/pizzas"))
+                .andExpect(status().is(200));
+    }
+
+    @Test
+    void jsonRequest() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/pizzas/9"))
+                .andDo(print())
+                .andExpect(content().contentType("application/json"))
+                .andExpect(status().isOk());
+    }
+
+    @Test
+    void searchRequestParameter() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders
+                        .get("/pizzas/search?name="))
+                .andDo(print())
                 .andExpect(status().is(200));
     }
 
