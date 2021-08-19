@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @WebMvcTest(controllers = PizzaController.class)
-class PizzaMVCTest {
+class PizzaMvcTest {
 
     @Autowired
     private MockMvc mockMvc;
