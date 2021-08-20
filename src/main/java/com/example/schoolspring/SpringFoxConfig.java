@@ -10,8 +10,8 @@ import springfox.documentation.spring.web.plugins.Docket;
 @Configuration
 public class SpringFoxConfig {
 
-    // Documentation url : http://localhost:8080/v2/api-docs
-    // Swagger-UI : http://localhost:8080/swagger-ui/
+    // Documentation url : http://localhost:8081/v2/api-docs
+    // Swagger-UI : http://localhost:8081/swagger-ui/
 
     @Bean
     public Docket api(){
